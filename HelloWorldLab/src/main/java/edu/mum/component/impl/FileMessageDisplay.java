@@ -25,7 +25,7 @@ public class FileMessageDisplay implements MessageDisplay {
                             + FileMessageDisplay.class.getName());
         }
 
-        System.out.println(messageOrigin.getMessage());
+       // System.out.println(messageOrigin.getMessage());
 
         writeMessageToFile(messageOrigin.getMessage());
     }
