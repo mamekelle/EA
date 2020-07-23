@@ -3,12 +3,19 @@ package edu.mum.domain;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+
+import java.io.Serializable;
 import java.util.Date;
 
-@Entity(name = "USER")
-@Table(name = "USER")
-public class User {
-    @Id
+@Entity()
+@Table(name = "User")
+public class User implements Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
 	@Column(name="ID")
