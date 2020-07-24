@@ -9,5 +9,6 @@ public interface UserService {
 	public void save(User user);
 	public List<User> findAll();
 	public User findByEmail(String email);
-	public void merge(User user);
+	public User update(User user);
+	public User testRefresh(User user);
 }
