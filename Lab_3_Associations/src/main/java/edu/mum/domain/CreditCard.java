@@ -12,7 +12,6 @@ import javax.persistence.*;
  * @author Christian Bauer
  */
 @Entity
-@Table(name = "CREDIT_CARD")
 public class CreditCard extends BillingDetails {
 	// Id Shared with Superclass - BillngDetails
 

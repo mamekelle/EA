@@ -1,9 +1,13 @@
 package edu.mum.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,9 +22,11 @@ public class UserCredentials {
 	@Column(nullable = false, length = 32)
 	String verifyPassword;
 	Boolean enabled;
-	@OneToMany
-	List<Authority> authority = new ArrayList<Authority>();
+	@OneToOne(mappedBy="userCredentials", cascade= {CascadeType.PERSIST, CascadeType.MERGE})
 	private User user;
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	List<Authority> authority = new ArrayList<Authority>();
+	
 
 	public String getUserName() {
 		return userName;
@@ -70,8 +76,9 @@ public class UserCredentials {
 		this.authority = authority;
 	}
 
-	public void addUser(User user2) {
-		// TODO Auto-generated method stub
+	public void addUser(User user) {
+		this.setUser(user);
+		user.setUserCredentials(this);
 		
 	}
 

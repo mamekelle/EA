@@ -19,7 +19,8 @@ public class Category implements Serializable {
 
     @Column(name = "CATEGORY_NAME", length = 255, nullable = false)
     private String name;
-
+    
+	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "categories")
     private List<Item> items = new ArrayList<Item>();
 
     

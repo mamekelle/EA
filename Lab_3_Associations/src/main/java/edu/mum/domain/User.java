@@ -4,44 +4,53 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
 @Entity
 @Table(name = "USERS")
- public class User implements Serializable  {
+public class User implements Serializable {
 
-    @Id @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name = "USER_ID")
-    private Long id = null;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "USER_ID")
+	private Long id = null;
 
-    @Version
-    private int version = 0;
+	@Version
+	private int version = 0;
 
-    
-     @Column(name = "FIRSTNAME", nullable = false)
-    private String firstName;
+	@Column(name = "FIRSTNAME", nullable = false)
+	private String firstName;
 
-    @Column(name = "LASTNAME", nullable = false)
-    private String lastName;
+	@Column(name = "LASTNAME", nullable = false)
+	private String lastName;
 
-    @Column(name = "EMAIL", nullable = false)
-    private String email;
+	@Column(name = "EMAIL", nullable = false)
+	private String email;
 
-    @Column(name = "RATING", nullable = false)
-    private Integer ranking = 0;
+	@Column(name = "RATING", nullable = false)
+	private Integer ranking = 0;
 
-    @Column(name = "IS_ADMIN", nullable = false)
-    private Boolean admin = false;
-
+	@Column(name = "IS_ADMIN", nullable = false)
+	private Boolean admin = false;
+	
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "userId")
 	private UserCredentials userCredentials;
-
-    private Set<Address> addresses = new HashSet<Address>();
+	
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	
+	private Set<Address> addresses = new HashSet<Address>();
 
 	public Long getId() {
 		return id;
@@ -128,8 +137,9 @@ import javax.persistence.Version;
 	}
 
 	public void addAddress(Address address) {
-		// TODO Auto-generated method stub
-		
+		// May be needs some modification
+		this.addresses.add(address);
+
 	}
 
 }

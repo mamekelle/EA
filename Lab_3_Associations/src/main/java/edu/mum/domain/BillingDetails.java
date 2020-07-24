@@ -16,8 +16,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "BILLING_DETAILS")
-
-
+@Inheritance(strategy=InheritanceType.JOINED)
 public abstract class BillingDetails implements Serializable, Comparable {
 
 	@Id

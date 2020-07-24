@@ -11,7 +11,6 @@ import javax.persistence.Table;
  * @author Christian Bauer
  */
 @Entity
-@Table(name = "BANK_ACCOUNT")
 public class BankAccount extends BillingDetails {
 
     @Column(name = "BA_ACCOUNT", nullable = true, length = 16)
