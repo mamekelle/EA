@@ -11,42 +11,41 @@ import edu.mum.service.ItemService;
 import edu.mum.service.UserService;
 
 @Component
-public class TestFindItemsBySellOrBuy{
+public class TestFindItemsBySellOrBuy {
 
 	@Autowired
 	ItemService itemService;
-	
- 	@Autowired
-	UserService userService;	
+
+	@Autowired
+	UserService userService;
 
 	public void test() {
- 
 
-	 	System.out.println();
-	    System.out.println("********** find By Buyer Or Seller  ***************");
- 
-	    User buyer = userService.findOne(2L); // "Jane Doe"
-	    User seller = userService.findOne(1L);  // John Doe
-	    
-	    // Test JPQL query
-	    List<Item> JPQLitems = itemService.findBySellerOrBuyer(null, buyer,null);	     // Shoes  
-	//   List<Item> JPQLitems = itemService.findBySellerOrBuyer(22, null,seller);	 //Sled    
+		System.out.println();
+		System.out.println("********** find By Buyer Or Seller  ***************");
+
+		User buyer = userService.findOne(2L); // "Jane Doe"
+		User seller = userService.findOne(1L); // John Doe
+
+		// Test JPQL query
+		List<Item> JPQLitems = itemService.findBySellerOrBuyer(null, buyer, null); // Shoes
+		// List<Item> JPQLitems = itemService.findBySellerOrBuyer(22, null,seller);
+		// //Sled
 //	    List<Item> JPQLitems = itemService.findBySellerOrBuyer(22, buyer,seller);	 // Sled & Shoes
 
-	    for (Item itemFound : JPQLitems) {
-		    System.out.println("Item Name : " + itemFound.getName());
-	    }
-	    
-	    // Test Criteria query
+		for (Item itemFound : JPQLitems) {
+			System.out.println("Item Name : " + itemFound.getName());
+		}
+
+		// Test Criteria query
 //	    List<Item> items = itemService.findItemCriteria(null,buyer,null);    // Shoes  
-	    List<Item> items = itemService.findItemCriteria(22,null,seller);   //Sled 
+		List<Item> items = itemService.findItemCriteria(22, null, seller); // Sled
 //	    List<Item> items = itemService.findItemCriteria(22,buyer,seller);  // Sled & Shoes
 
+		System.out.println();
+		for (Item itemFound : items) {
+			System.out.println("Item Name : " + itemFound.getName());
+		}
 
-	 	   System.out.println();
-	    for (Item itemFound : items) {
-		    System.out.println("Item Name : " + itemFound.getName());
-	    }
-	    
 	}
 }
