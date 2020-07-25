@@ -34,7 +34,7 @@ public class Main {
     testItems.setupItems();
     
     // Named Query 
-    testItemCategory.testItemCategory();
+   testItemCategory.testItemCategory();
      
     // JPQL - Criteria Query
     testFindItemsBySellOrBuy.test();

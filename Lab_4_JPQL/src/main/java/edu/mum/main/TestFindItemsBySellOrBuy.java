@@ -29,13 +29,17 @@ public class TestFindItemsBySellOrBuy{
 	    User seller = userService.findOne(1L);  // John Doe
 	    
 	    // Test JPQL query
-//	    List<Item> items = itemService.findBySellerOrBuyer(null, buyer,null);	     // Shoes  
-//	    List<Item> items = itemService.findBySellerOrBuyer(22, null,seller);	 //Sled    
-//	    List<Item> items = itemService.findBySellerOrBuyer(22, buyer,seller);	 // Sled & Shoes
+	    List<Item> JPQLitems = itemService.findBySellerOrBuyer(null, buyer,null);	     // Shoes  
+	//   List<Item> JPQLitems = itemService.findBySellerOrBuyer(22, null,seller);	 //Sled    
+//	    List<Item> JPQLitems = itemService.findBySellerOrBuyer(22, buyer,seller);	 // Sled & Shoes
 
+	    for (Item itemFound : JPQLitems) {
+		    System.out.println("Item Name : " + itemFound.getName());
+	    }
+	    
 	    // Test Criteria query
-	    List<Item> items = itemService.findItemCriteria(null,buyer,null);    // Shoes  
-//	    List<Item> items = itemService.findItemCriteria(22,null,seller);   //Sled 
+//	    List<Item> items = itemService.findItemCriteria(null,buyer,null);    // Shoes  
+	    List<Item> items = itemService.findItemCriteria(22,null,seller);   //Sled 
 //	    List<Item> items = itemService.findItemCriteria(22,buyer,seller);  // Sled & Shoes
 
 
