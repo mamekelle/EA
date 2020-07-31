@@ -81,6 +81,6 @@ public class TestItems {
 		    buyer.addBoughtItem(itemShoes);
  		    userService.update(buyer);
  
-
+ 		   userService.findAll();
 	}
 }
